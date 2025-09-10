@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tech.AI - Links</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      color: #00ff00;
+    }
+
+    /* Canvas background for Matrix Effect */
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: black;
+    }
+
+    /* Links Page */
+    .links-box {
+      text-align: center;
+      width: 100%;
+    }
+    .links-box h1 {
+      font-size: 50px;
+      color: #00ff00;
+      margin-bottom: 20px;
+      text-shadow: 0 0 25px #00ff00, 0 0 50px #00ff00;
+    }
+    .links-box h2 {
+      color: #00ff00;
+      margin-bottom: 35px;
+      font-size: 32px;
+      text-shadow: 0 0 18px #00ff00;
+    }
+    .links-box button {
+      display: block;
+      width: 400px;
+      margin: 25px auto;
+      padding: 22px;
+      border: none;
+      border-radius: 18px;
+      font-size: 26px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #000;
+      background: linear-gradient(135deg, #00ff00, #33ff33);
+      box-shadow: 0 0 35px #00ff00, 0 0 70px #00ff00;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .links-box button::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+      transition: 0.5s;
+    }
+    .links-box button:hover::after { left: 100%; }
+    .links-box button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 50px #33ff33, 0 0 100px #33ff33;
+    }
+
+    /* WhatsApp Round Button */
+    .whatsapp-btn {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #25D366;
+      border: none;
+      cursor: pointer;
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      box-shadow: 0 0 35px #25D366, 0 0 70px #25D366;
+      animation: pulseWhats 2s infinite;
+    }
+    .whatsapp-btn img {
+      width: 60px;
+      height: 60px;
+    }
+    @keyframes pulseWhats {
+      0% { transform: scale(1); box-shadow: 0 0 20px #25D366; }
+      50% { transform: scale(1.15); box-shadow: 0 0 45px #25D366, 0 0 80px #25D366; }
+      100% { transform: scale(1); box-shadow: 0 0 20px #25D366; }
+    }
+
+    /* WhatsApp Group Button */
+    .whatsapp-group {
+      position: fixed;
+      bottom: 170px;
+      right: 40px;
+      padding: 20px 30px;
+      background: #128C7E;
+      color: white;
+      font-size: 22px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 30px #128C7E;
+      animation: bounceGroup 3s infinite;
+    }
+    .whatsapp-group:hover {
+      background: #25D366;
+      box-shadow: 0 0 50px #25D366;
+    }
+    @keyframes bounceGroup {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Matrix Rain Background -->
+  <canvas id="matrix"></canvas>
+
+  <!-- Links Page -->
+  <div class="links-box">
+    <h1>Tech.AI</h1>
+    <h2>Choose Platform</h2>
+
+    <!-- Old Buttons -->
+    <button onclick="window.open('https://vt.tiktok.com/ZSAEpNQ7K/', '_blank')">TikTok</button>
+    <button onclick="window.open('https://vt.tiktok.com/ZSAEpmpxf/', '_blank')">Facebook</button>
+
+    <!-- New Buttons -->
+    <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bvtX3wtb21mil503V','_blank')">Instagram</button>
+    <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bvtX3wtb21mil503V','_blank')">WhatsApp</button>
+    <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bvtX3wtb21mil503V','_blank')">Android</button>
+    <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bvtX3wtb21mil503V','_blank')">Gallery</button>
+    <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bvtX3wtb21mil503V','_blank')">SMS</button>
+    <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bvtX3wtb21mil503V','_blank')">Mobile</button>
+    <button onclick="window.open('https://whatsapp.com/channel/0029Vb6bvtX3wtb21mil503V','_blank')">WiFi</button>
+  </div>
+
+  <!-- WhatsApp Buttons -->
+  <button class="whatsapp-group" onclick="window.open('https://chat.whatsapp.com/BDaIgl3YDNfFbmfLBBIlQp?mode=ems_copy_t','_blank')">Join WhatsApp Group</button>
+  <button class="whatsapp-btn" onclick="window.open('https://wa.me/923478936242','_blank')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </button>
+
+  <script>
+    // Matrix Rain Effect
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "010101010101";
+    const fontSize = 20;
+    const columns = canvas.width / fontSize;
+    const drops = [];
+    for (let x = 0; x < columns; x++) {
+      drops[x] = 1;
+    }
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#00ff00";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 33);
+
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
+</body>
+</html>
